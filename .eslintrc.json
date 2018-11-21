@@ -1,0 +1,26 @@
+{
+  "extends": ["prettier", "eslint:recommended", "plugin:node/recommended"],
+  "rules": {
+    "semi": ["error", "never"],
+    "space-before-function-paren": ["error", "always"],
+    "comma-dangle": ["error", "never"],
+    "require-jsdoc": 0,
+    "max-nested-callbacks": ["error", 7],
+    "no-invalid-this": 0,
+    "no-undef": "error",
+    "no-undef-init": "error",
+    "no-dupe-keys": "error",
+    "no-const-assign": "error",
+    "node/no-unpublished-require": 0,
+    "node/no-unsupported-features": 0,
+    "prefer-template": "error",
+    "dot-notation": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error", "log"]
+      }
+    ]
+  }
+}
