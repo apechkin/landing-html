@@ -1,0 +1,35 @@
+---
+kind: pipeline
+name: constructor
+steps:
+  - name: landing-html
+    image: mhart/alpine-node:10
+    when:
+      branch:
+        - develop
+    commands:
+      - npm install -g npm
+      - npm install
+  - name: ssh
+    image: appleboy/drone-ssh
+    when:
+      branch:
+        - develop
+    host: pechkin.space
+    username: ${DRONE_HOOKS_USER}
+    password: ${DRONE_HOOKS_PASSWORD}
+    port: ${SSH_CONNECT_PORT}
+    script:
+      - docker stop landing-html
+      - docker rm -f landing-html
+      - docker run --restart always --name landing-html \
+      - -e VIRTUAL_HOST=testpage.pechkin.space \
+      - -e LETSENCRYPT_HOST=testpage.pechkin.space \
+      - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
+      - -d landing-html
+      - docker rmi $(docker images -f "dangling=true" -q)
+---
+kind: signature
+hmac: 1912ef8d343554955081771c944a890cc2fa087ebeda7377a29d5a2454267ee6
+
+...
