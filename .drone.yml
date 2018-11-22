@@ -16,8 +16,9 @@ steps:
       branch:
         - develop
     host: pechkin.space
+    username: $ssh_username
+    password: $ssh_password
     port: 22
-    secrets: [ssh_username, ssh_password]
     script:
       - docker stop landing-html
       - docker rm -f landing-html
@@ -29,6 +30,6 @@ steps:
       - docker rmi $(docker images -f "dangling=true" -q)
 ---
 kind: signature
-hmac: e13af79d5e7db20c8e48e0089a11553dc6abc22c355c588678d2fdd3d7d9be44
+hmac: ca3a347a753a98b89476f369e68f1337b9b661ad3f01cce4a50a9907d42419e9
 
 ...
