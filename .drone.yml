@@ -13,8 +13,7 @@ steps:
   - name: ssh
     image: appleboy/drone-ssh
     settings:
-      host:
-        from_secret: ssh_host_name
+      host: pechkin.space
       username:
         from_secret: ssh_username
       password:
@@ -24,17 +23,18 @@ steps:
         - echo "Here we are"
         - docker stop landing-html
         - docker rm -f landing-html
-        - docker run --restart always --name landing-html \
+        - docker run --restart always --name landing-html --network=webproxy \
         - -e VIRTUAL_HOST=testpage.pechkin.space \
+        - -e VIRTUAL_PORT=1337 \
         - -e LETSENCRYPT_HOST=testpage.pechkin.space \
         - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
         - -d landing-html
-        - docker rmi $(docker images -f "dangling=true" -q)
+        - docker rmi $$(docker images -f "dangling=true" -q)
     when:
       branch:
         - develop
 ---
 kind: signature
-hmac: 1d85d5e140edb6db0350e7596eb88535cb21583b44f7aab5fdcf6520a8b66f1b
+hmac: 5ff240946af5b1fc29a5c4c0ac9e003721553a8bc572f7a22c83e7adfb336512
 
 ...
