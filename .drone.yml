@@ -28,12 +28,12 @@ steps:
         - -e LETSENCRYPT_HOST=testpage.pechkin.space \
         - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
         - -d landing-html
-        - docker rmi $$(docker images -f "dangling=true" -q)
+        - docker prune image -f
     when:
       branch:
         - develop
 ---
 kind: signature
-hmac: 4015a5feba9c83a0a96d956c988ca91fb3480a04edfc38f86c7dbdc6f4501de7
+hmac: d616bf0983c76d95704246973c2f15b6518f1b03459c776a8ab045f514ec6017
 
 ...
