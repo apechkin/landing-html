@@ -12,24 +12,29 @@ steps:
       - npm install
   - name: ssh
     image: appleboy/drone-ssh
+    settings:
+      host:
+        from_secret: ssh_host_name
+      username:
+        from_secret: ssh_username
+      password:
+        from_secret: ssh_password
+      port: 22
+      script:
+        - echo "Here we are"
+        - docker stop landing-html
+        - docker rm -f landing-html
+        - docker run --restart always --name landing-html \
+        - -e VIRTUAL_HOST=testpage.pechkin.space \
+        - -e LETSENCRYPT_HOST=testpage.pechkin.space \
+        - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
+        - -d landing-html
+        - docker rmi $(docker images -f "dangling=true" -q)
     when:
       branch:
         - develop
-    host: pechkin.space
-    username: $ssh_username
-    password: $ssh_password
-    port: 22
-    script:
-      - docker stop landing-html
-      - docker rm -f landing-html
-      - docker run --restart always --name landing-html \
-      - -e VIRTUAL_HOST=testpage.pechkin.space \
-      - -e LETSENCRYPT_HOST=testpage.pechkin.space \
-      - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
-      - -d landing-html
-      - docker rmi $(docker images -f "dangling=true" -q)
 ---
 kind: signature
-hmac: ca3a347a753a98b89476f369e68f1337b9b661ad3f01cce4a50a9907d42419e9
+hmac: 1d85d5e140edb6db0350e7596eb88535cb21583b44f7aab5fdcf6520a8b66f1b
 
 ...
