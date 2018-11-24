@@ -28,12 +28,12 @@ steps:
         - -e LETSENCRYPT_HOST=testpage.pechkin.space \
         - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
         - -d landing-html
-        - docker prune image -f
+        - docker image prune -f
     when:
       branch:
         - develop
 ---
 kind: signature
-hmac: d616bf0983c76d95704246973c2f15b6518f1b03459c776a8ab045f514ec6017
+hmac: c6c00ab4810fef86d39b6a9f448cd0317ea8203d328b01559abcb6792af822b8
 
 ...
