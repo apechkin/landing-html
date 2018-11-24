@@ -1,6 +1,7 @@
 FROM mhart/alpine-node:10
 
 ENV VIRTUAL_HOST testpage.pechkin.space
+ENV VIRTUAL_PORT 1337
 ENV LETSENCRYPT_HOST testpage.pechkin.space
 ENV LETSENCRYPT_EMAIL anatmozg@mail.ru
 ENV TZ=Europe/Moscow
