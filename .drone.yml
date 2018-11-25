@@ -40,11 +40,12 @@ steps:
       branch:
         - feature/*
     settings:
-      repo: tolych/landing-html-feature
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
+      repo: tolych/landing-html-feature
+      tags: latest
   - name: run-master
     image: appleboy/drone-ssh
     settings:
@@ -117,6 +118,6 @@ steps:
         - feature/*
 ---
 kind: signature
-hmac: 216c114d93ffd2c1c6028749c16f860077a9167992fb6864f50e16ac1e124ac0
+hmac: a66ad8374ce9fd2c4edc3e8da1c16caa1fffe2bd8262abb41b4b3d888fe64113
 
 ...
