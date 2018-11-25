@@ -18,22 +18,24 @@ steps:
       branch:
         - master
     settings:
-      repo: tolych/landing-html
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
+      repo: tolych/landing-html
+      tags: latest
   - name: docker-develop
     image: plugins/docker
     when:
       branch:
         - develop
     settings:
-      repo: tolych/landing-html-dev
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
+      repo: tolych/landing-html-dev
+      tags: latest
   - name: docker-feature
     image: plugins/docker
     when:
@@ -118,6 +120,6 @@ steps:
         - feature/*
 ---
 kind: signature
-hmac: a66ad8374ce9fd2c4edc3e8da1c16caa1fffe2bd8262abb41b4b3d888fe64113
+hmac: 0d03e0ea93005fb0269e44172c52614a64a7d4eaeaebe7b04739b0bd097953ba
 
 ...
