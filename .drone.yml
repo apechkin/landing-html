@@ -1,0 +1,122 @@
+---
+kind: pipeline
+name: constructor
+steps:
+  - name: create-image
+    image: mhart/alpine-node:10
+    when:
+      branch:
+        - develop
+        - master
+        - feature/*
+    commands:
+      - npm install -g npm
+      - npm install
+  - name: docker
+    image: plugins/docker
+    when:
+      branch:
+        - master
+    settings:
+      repo: tolych/landing-html
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+  - name: docker-develop
+    image: plugins/docker
+    when:
+      branch:
+        - develop
+    settings:
+      repo: tolych/landing-html-dev
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+  - name: docker-feature
+    image: plugins/docker
+    when:
+      branch:
+        - feature/*
+    settings:
+      repo: tolych/landing-html-feature
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+  - name: run-develop
+    image: appleboy/drone-ssh
+    settings:
+      host: pechkin.space
+      username:
+        from_secret: ssh_username
+      password:
+        from_secret: ssh_password
+      port:
+        from_secret: ssh_port
+      script:
+        - echo "Here we are, let's go master"
+        - docker pull tolych/landing-html
+        - docker run --restart always --name landing-html --network=webproxy \
+        - -e VIRTUAL_HOST=html.pechkin.space \
+        - -e VIRTUAL_PORT=1337 \
+        - -e LETSENCRYPT_HOST=html.pechkin.space \
+        - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
+        - -d tolych/landing-html
+        - docker image prune -f
+    when:
+      branch:
+        - master
+  - name: run-develop
+    image: appleboy/drone-ssh
+    settings:
+      host: pechkin.space
+      username:
+        from_secret: ssh_username
+      password:
+        from_secret: ssh_password
+      port:
+        from_secret: ssh_port
+      script:
+        - echo "Here we are, let's go develop"
+        - docker pull tolych/landing-html-dev
+        - docker run --restart always --name landing-html-dev --network=webproxy \
+        - -e VIRTUAL_HOST=dev-html.pechkin.space \
+        - -e VIRTUAL_PORT=1337 \
+        - -e LETSENCRYPT_HOST=dev-html.pechkin.space \
+        - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
+        - -d tolych/landing-html-dev
+        - docker image prune -f
+    when:
+      branch:
+        - develop
+  - name: run-feature
+    image: appleboy/drone-ssh
+    settings:
+      host: pechkin.space
+      username:
+        from_secret: ssh_username
+      password:
+        from_secret: ssh_password
+      port:
+        from_secret: ssh_port
+      script:
+        - echo "Here we are, let's go feature"
+        - docker pull tolych/landing-html-feature
+        - docker rm -f landing-html-feature
+        - docker run --restart always --name landing-html-feature --network=webproxy \
+        - -e VIRTUAL_HOST=feature-html.pechkin.space \
+        - -e VIRTUAL_PORT=1337 \
+        - -e LETSENCRYPT_HOST=feature-html.pechkin.space \
+        - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
+        - -d tolych/landing-html-feature
+        - docker image prune -f
+    when:
+      branch:
+        - feature/*
+---
+kind: signature
+hmac: daeb20bce5a863c2f5dca49cbf12a426d1fa8e1395636ce09b3d1371ac5e4c58
+
+...
