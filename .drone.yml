@@ -73,12 +73,12 @@ steps:
       port: 22
       script:
         - echo "Here we are"
-        - docker pull landing-html-feature
+        - docker pull tolych/landing-html-feature
     when:
       branch:
         - feature/*
 ---
 kind: signature
-hmac: 02bd9e66a992a3ac522663beea1d799390f74fd02ecb0a758913d4497290967e
+hmac: e433d47894dbefef7d94373696d87469f192c8eae2c8cdc5d533f8a572268d8e
 
 ...
