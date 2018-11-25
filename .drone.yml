@@ -45,7 +45,7 @@ steps:
         from_secret: docker_username
       password:
         from_secret: docker_password
-  - name: run-develop
+  - name: run-master
     image: appleboy/drone-ssh
     settings:
       host: pechkin.space
@@ -117,6 +117,6 @@ steps:
         - feature/*
 ---
 kind: signature
-hmac: daeb20bce5a863c2f5dca49cbf12a426d1fa8e1395636ce09b3d1371ac5e4c58
+hmac: 216c114d93ffd2c1c6028749c16f860077a9167992fb6864f50e16ac1e124ac0
 
 ...
