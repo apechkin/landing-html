@@ -2,7 +2,7 @@
 kind: pipeline
 name: constructor
 steps:
-  - name: landing-html
+  - name: create-image
     image: mhart/alpine-node:10
     when:
       branch:
@@ -10,7 +10,26 @@ steps:
     commands:
       - npm install -g npm
       - npm install
-  - name: ssh
+  - name: create-image-feature
+    image: mhart/alpine-node:10
+    when:
+      branch:
+        - feature/*
+    commands:
+      - npm install -g npm
+      - npm install
+  - name: docker-feature
+    image: plugins/docker
+    when:
+      branch:
+        - feature/*
+    settings:
+      repo: tolych/landing-html
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+  - name: pull-and-run
     image: appleboy/drone-ssh
     settings:
       host: pechkin.space
@@ -34,6 +53,6 @@ steps:
         - develop
 ---
 kind: signature
-hmac: c6c00ab4810fef86d39b6a9f448cd0317ea8203d328b01559abcb6792af822b8
+hmac: ae36ec77c12ca347c9e5a598e059fa928cdf87e10fcb3b846226e53a99ae7473
 
 ...
