@@ -18,18 +18,29 @@ steps:
     commands:
       - npm install -g npm
       - npm install
+  - name: docker
+    image: plugins/docker
+    when:
+      branch:
+        - develop
+    settings:
+      repo: tolych/landing-html-dev
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
   - name: docker-feature
     image: plugins/docker
     when:
       branch:
         - feature/*
     settings:
-      repo: tolych/landing-html
+      repo: tolych/landing-html-feature
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
-  - name: pull-and-run
+  - name: run-develop
     image: appleboy/drone-ssh
     settings:
       host: pechkin.space
@@ -51,8 +62,23 @@ steps:
     when:
       branch:
         - develop
+  - name: run-feature
+    image: appleboy/drone-ssh
+    settings:
+      host: pechkin.space
+      username:
+        from_secret: ssh_username
+      password:
+        from_secret: ssh_password
+      port: 22
+      script:
+        - echo "Here we are"
+        - docker pull landing-html-feature
+    when:
+      branch:
+        - feature/*
 ---
 kind: signature
-hmac: ae36ec77c12ca347c9e5a598e059fa928cdf87e10fcb3b846226e53a99ae7473
+hmac: 02bd9e66a992a3ac522663beea1d799390f74fd02ecb0a758913d4497290967e
 
 ...
