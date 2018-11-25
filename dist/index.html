@@ -14,90 +14,182 @@
     />
     <link href="/media/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/media/css/mdb.min.css" rel="stylesheet" />
-    <link href="/media/css/style.css" rel="stylesheet" />
+    <link href="/static/css/style.css" rel="stylesheet" />
   </head>
 
   <body>
-    <div class="container">
-      <header>
-        <nav class="navbar navbar-expand-lg navbar-dark indigo lighten-1">
+    <header class="mb-5">
+      <nav
+        class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"
+      >
+        <div class="container">
+          <a
+            class="navbar-brand"
+            href="https://github.com/apechkin/"
+            target="_blank"
+            >GitHub</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="https://github.com/apechkin"
-                  target="_blank"
-                  >Github</a
-                >
+                <a class="nav-link" href="#">React version</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">On React</a>
+                <a class="nav-link" href="#">Vue version</a>
               </li>
-              <li class="nav-item"><a class="nav-link" href="#">On Vue</a></li>
             </ul>
           </div>
-        </nav>
-      </header>
-    </div>
+        </div>
+      </nav>
+      <div id="intro" class="view">
+        <div class="mask rgba-black-strong">
+          <div
+            class="container d-flex align-items-center justify-content-center h-100"
+          >
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-10">
+                <h3
+                  class="display-4 font-weight-bold white-text pt-5 mb-2 text-center"
+                >
+                  About me...
+                </h3>
+                <hr class="hr-light" />
+                <p class="white-text text-left">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Doloribus necessitatibus quod quae quis, possimus magni sequi
+                  quia quibusdam, impedit delectus porro inventore odit
+                  voluptatibus praesentium id ad, iste quos ipsa. Lorem ipsum,
+                  dolor sit amet consectetur adipisicing elit. Veniam animi unde
+                  minima perferendis maxime consectetur suscipit, dolore
+                  recusandae hic amet maiores soluta.
+                </p>
+                <button type="button" class="btn btn-outline-white">
+                  Read more<i class="fa fa-book ml-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.Mask -->
+    </header>
+    <!-- Main layout -->
     <main>
-      <div class="container my-4">
-        <div class="row">
-          <div class="col-md-4">
-            <div
-              class="card card-image"
-              style="background-image: url(https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20%2873%29.jpg);"
-            >
-              <div
-                class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
-              >
-                <div>
-                  <p class="pb-3">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Repellat fugiat, laboriosam, voluptatem, optio vero odio nam
-                    sit officia accusamus minus error nisi architecto nulla
-                    ipsum dignissimos. Odit sed qui, dolorum!
+      <div class="container">
+        <!-- Section: Best Features -->
+        <section id="best-features">
+          <!-- Heading -->
+          <h2 class="mb-5 text-center font-weight-bold">Best practice</h2>
+
+          <!-- Grid row -->
+          <div class="row d-flex justify-content-center mb-4">
+            <!-- Grid column -->
+            <div class="col-md-12">
+              <!-- Description -->
+              <p class="blue-grey-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Exercitationem, praesentium corporis aspernatur fugiat beatae
+                animi a iure, incidunt sit pariatur repellendus nemo impedit
+                maxime non. Dolor recusandae quisquam nulla consequuntur.
+                Alcatra hamburger pastrami fatback bacon kielbasa. Turkey
+                picanha landjaeger flank beef ribs. Tenderloin pork buffalo tail
+                flank ham hock. Ham hock filet mignon ham meatball, jerky strip
+                steak turducken prosciutto porchetta beef tongue ball tip pig
+                corned beef tri-tip
+              </p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 mb-1 text-center">
+              <div class="card">
+                <div class="card-body">
+                  <i class="fa fa-bomb fa-4x text-success"></i>
+                  <h4 class="my-4 font-weight-bold">Node.js</h4>
+                  <p class="text-left blue-grey-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex
+                    quos ab delectus odit debitis, molestias qui autem
+                    distinctio saepe ut, ratione tenetur sint omnis? Fugit earum
+                    itaque aspernatur vel. Soluta!
                   </p>
                 </div>
               </div>
             </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 mb-1 text-center">
+              <div class="card">
+                <div class="card-body">
+                  <i class="fa fa-rocket fa-4x blue-text"></i>
+                  <h4 class="my-4 font-weight-bold">React.js</h4>
+                  <p class="text-left blue-grey-text">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe aperiam quisquam distinctio, sequi sit amet iure
+                    numquam porro reiciendis? Quisquam exercitationem ab optio,
+                    modi quis sint? Accusamus!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 mb-1 text-center">
+              <div class="card">
+                <div class="card-body">
+                  <i class="fa fa-coffee fa-4x teal-text"></i>
+                  <h4 class="my-4 font-weight-bold">Vue.js</h4>
+                  <p class="text-left blue-grey-text">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Voluptatum corrupti expedita, quos nemo laudantium maxime
+                    vitae ea sed eius reprehenderit ipsa minima necessitatibus.
+                    Vel enim nemo error?
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Grid column -->
           </div>
-          <div class="col-md-8">
-            <p class="indigo-text font-weight-bold">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis at,
-              aperiam placeat doloribus ut exercitationem quae dicta a iste eum
-              aliquid enim odio porro assumenda. Harum aliquid quia temporibus
-              dicta.
-            </p>
-            <p class="indigo-text font-weight-bold">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis at,
-              aperiam placeat doloribus ut exercitationem quae dicta a iste eum
-              aliquid enim odio porro assumenda. Harum aliquid quia temporibus
-              dicta.
-            </p>
-            <p class="indigo-text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
-              eveniet architecto odit earum nam temporibus, alias eum nisi
-              expedita, aperiam quasi tempore vitae repellendus laborum sapiente
-              necessitatibus corporis est odio.
-            </p>
-            <p class="indigo-text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
-              eveniet architecto odit earum nam temporibus, alias eum nisi
-              expedita, aperiam quasi tempore vitae repellendus laborum sapiente
-              necessitatibus corporis est odio.
-            </p>
-            <p class="indigo-text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus
-              eveniet architecto odit earum nam temporibus, alias eum nisi
-              expedita, aperiam quasi tempore vitae repellendus laborum sapiente
-              necessitatibus corporis est odio.
-            </p>
-          </div>
-        </div>
+          <!-- Grid row -->
+        </section>
+        <!-- Section: Best Features -->
+        <hr class="my-5" />
+
+        <!-- Section: Examples -->
+        <section id="examples"></section>
+        <!-- Section: Examples -->
+
+        <hr class="my-5" />
+
+        <!-- Section: Gallery -->
+        <section id="gallery"></section>
+        <!-- Section: Gallery -->
+
+        <hr class="my-5" />
+
+        <!-- Section: Contact -->
+        <section id="contact"></section>
+        <!-- Section: Contact -->
       </div>
     </main>
-    <div class="container">
+    <!-- Main layout -->
+    <div class="container-fluid">
       <footer class="page-footer font-small indigo lighten-1">
         <div class="footer-copyright text-center py-3">© Copyright</div>
       </footer>

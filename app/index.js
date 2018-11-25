@@ -9,6 +9,7 @@ app.use(
   '/media',
   express.static(path.join(__dirname, '../', '/node_modules/mdbootstrap'))
 )
+app.use('/static', express.static(path.join(__dirname, '../', '/static')))
 app.use('/', express.static(path.join(__dirname, '../', '/dist'), options))
 
 app.listen(port, function () {
