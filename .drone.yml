@@ -75,11 +75,19 @@ steps:
       script:
         - echo "Here we are"
         - docker pull tolych/landing-html-feature
+        - docker rm -f landing-html-feature
+        - docker run --restart always --name landing-html-feature --network=webproxy \
+        - -e VIRTUAL_HOST=feature.pechkin.space \
+        - -e VIRTUAL_PORT=1337 \
+        - -e LETSENCRYPT_HOST=feature.pechkin.space \
+        - -e LETSENCRYPT_EMAIL=anatmozg@mail.ru \
+        - -d tolych/landing-html-feature
+        - docker image prune -f
     when:
       branch:
         - feature/*
 ---
 kind: signature
-hmac: 7e6c723130923c6b4efab5e15d7ee1ac55d0ec0e7091427295b62968184a1b36
+hmac: 2fee90255b73f8a7305cc7fdad498ab23c711e2c1543ca4ebe13347d51c848fe
 
 ...
