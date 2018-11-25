@@ -70,7 +70,8 @@ steps:
         from_secret: ssh_username
       password:
         from_secret: ssh_password
-      port: 22
+      port:
+        from_secret: ssh_port
       script:
         - echo "Here we are"
         - docker pull tolych/landing-html-feature
@@ -79,6 +80,6 @@ steps:
         - feature/*
 ---
 kind: signature
-hmac: e433d47894dbefef7d94373696d87469f192c8eae2c8cdc5d533f8a572268d8e
+hmac: 7e6c723130923c6b4efab5e15d7ee1ac55d0ec0e7091427295b62968184a1b36
 
 ...
